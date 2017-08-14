@@ -1,3 +1,12 @@
+# module3-getting_and_cleaning_data
+Data Science Course Module 3: Getting and Cleaning Data. Final project.
+
+======================================================================
+Author: Costanzo Di Maria.
+14/08/2017
+
+
+
 =====================================================================
 Code explanation.
 
@@ -5,7 +14,7 @@ Code explanation.
 Initially, the code load the libraries that will be needed in the rest of the code.
 These are the 'data.table' and 'dplyr' libraries.
 
-Then, it checks if a folder called 'data' is in the working directory. If there is not,
+Then, it checks if a folder called 'data' is in the working directory. If it is not,
 the folder is created. Then it checks if the zip file containing the dataset is present in 
 'data'. If not present, the zip file is downloaded. Finally, it checks if the folder 
 'UCI HAR Dataset' is present, i.e. if the zip file has been unzipped. If not present, the 
@@ -16,10 +25,10 @@ be in './data/UCI HAR Dataset'.
 The data is prepared sequentially following the five steps given in the project instructions.
 
 Step 1 - Merge the training and test sets to create one dataset.
-The training data set is read in from the "X.train.txt" file. The relative information
-corresponding to the subject who performed each activity and the type of each activity
+The training data set is read in from the "X_train.txt" file. The relative information
+corresponding to the subject who performed each activity and the type of activity
 are also read in, respectively from "subject_train.txt" and "y_train.txt". All these data
-are collated in one tbl structure called 'data_train'.
+are collated into one tbl structure called 'data_train'.
 The same process is performed for the test set, and all data are collated in the 
 'data_test' tbl variable.
 The 'data_train' and 'data_test' are combined together using rbind. The entire data set
@@ -38,29 +47,27 @@ in 'feature_positions'. The resulting variable is called 'data_subset', which co
 columns, subject id + activity id + 66 features.
 
 Step 3 - Use descriptive activity names to name the activities in the data set.
-The corrspondence between activity id and activity name is takedn from the file 
+The corrspondence between activity id and activity name is taken from the file 
 "activity_labels.txt". The 6 activity names are utilised to create a lookup vector. 
 The activity ids are then changed to activity names by indexing the lookup vector with
 the second column of 'data_subset'.
 
-
 Step 4 - Appropriately label the data set with descriptive variable names.
 I created a vector 'var_names' containing the names to be given to the columns. The first
 two names are 'subject_id' and 'activity_id'. The remaing 66 names are the 'feature_names'
-identified at step 2. I did not modify the features names as I found they were already
+identified at step 2. I did not modify the feature names as I found they were already
 well descriptive. In order to make them even more explicit, I would have needed to make 
 the names longer. But in my epxerience I have found that very long variable or column
 names become difficult to handle in the code. 
 The column names of 'data_subset' were changed by assigning 'var_names' to 
-colnames(data_subset)
+colnames(data_subset).
 
-
-Step 5 - From the dataset in step 4, create a second, idipenedent tidy dataset 
+Step 5 - From the dataset in step 4, create a second, indepenedent tidy dataset 
 with the average of each variable for each activity and each subject.
 To solve this problem, I utilised the dplyr package and the %>% operator. The
 data were grouped by 'activity_id' and 'subject_id' using the group_by function. 
 Averages for each resulting group were calculated using the summarise_all function.
-The resulting tbl is called 'data_summary' and is the only varible returned by the fucntion,
+The resulting tbl is called 'data_summary' and this is the only variable returned by the fucntion,
 as required by the instructions.
 'data_summary' is also a tidy data set because it satisfies the three characteristics:
 
