@@ -2,7 +2,8 @@
 Data Science Course Module 3: Getting and Cleaning Data. Final project.
 
 ======================================================================
-Project by: Costanzo Di Maria.
+Author: Costanzo Di Maria.
+14/08/2017
 
 
 =====================================================================
@@ -31,3 +32,25 @@ The characteristics of a tidy data set are:
 2) Each observation forms a row.
 3) Each type of observational unit forms a table.
 [References: course material and Wickham H., "Tidy Data", Journal of Statistical Software, issue 10, volume 59, August 2014.]
+
+
+====================================================================
+Repo content.
+This repo contains three files as required in the project instructions:
+
+1 - run_analyisis.R contains the R code which performs the analysis as required in the five steps of theinstructions.
+2 - CodeBook.md describes the variables, the data, and any transformations or work that I performed to clean up the data.
+3 - README.md this file.
+
+
+=====================================================================
+Code instructions.
+The solution I have provided is organised in one file only, run_analysis.R.
+After you source the code, you have one function available called run_analysis().
+
+Only you have to do is calling this function from the command line, it does not need any input arguments.
+The function returns the data set as described at question 5 above. The data set returned is tidy because 
+it satisifies the three characteristics of a tidy data set.
+
+Further details about the code implementation are given in the file CodeBook.md, along with a description of 
+the variables contained in the dataset.
