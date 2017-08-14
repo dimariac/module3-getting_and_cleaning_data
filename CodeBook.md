@@ -57,9 +57,57 @@ colnames(data_subset)
 
 Step 5 - From the dataset in step 4, create a second, idipenedent tidy dataset 
 with the average of each variable for each activity and each subject.
+To solve this problem, I utilised the dplyr package and the %>% operator. The
+data were grouped by 'activity_id' and 'subject_id' using the group_by function. 
+Averages for each resulting group were calculated using the summarise_all function.
+The resulting tbl is called 'data_summary' and is the only varible returned by the fucntion,
+as required by the instructions.
+'data_summary' is also a tidy data set because it satisfies the three characteristics:
 
+1) each variable forms a columns
+2) each observation froms a row
+3) each type of observational unit forms a table
 
 
 
 =====================================================================
 Variables description.
+Each observation / entry of the returned table provides the mean value for a given feature (column name)
+across all records of the same activity type for each subject.
+The features are as described in "feature_info.txt".
+
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time
+domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and
+a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then
+separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a
+corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and
+tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag,
+tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ,
+fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals).
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+
+For each of the signals above, the mean() and std()  vales are returned by run_analysis().
